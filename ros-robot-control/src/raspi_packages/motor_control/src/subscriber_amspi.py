@@ -34,6 +34,7 @@ def listener():
     amspi = AMSpi.AMSpi()
     amspi.set_74HC595_pins(17, 18, 22)          # Set PINs for controlling shift register (GPIO numbering)
     amspi.set_L293D_pins(None, None, 23, 24)    # Set PINs for controlling the 4 possible motors (GPIO numbering)
+    amspi.set_pwm_frequency([20,20,20,20])
     amspi.stop_dc_motors([amspi.DC_Motor_1, amspi.DC_Motor_2])
     rospy.loginfo(rospy.get_caller_id() + ": Motor started.")
 

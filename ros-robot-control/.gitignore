@@ -5,3 +5,4 @@ devel/
 logs/
 .idea/
 .atom-build.json
+*.pyc
