@@ -34,17 +34,17 @@ def init():
         pressed = False
         velocity_left = 0
         velocity_right = 0
-        if joy.leftTrigger():
-            rospy.loginfo(rospy.get_caller_id() + ": Xbox joy.leftTrigger() " + str(joy.leftTrigger()))
-            msg.command = 1
-            velocity_left = max(-100, velocity_left - 100.0 * joy.leftTrigger())
-            velocity_right =  max(-100, velocity_right - 100.0 * joy.leftTrigger())
-            pressed = True
         if joy.rightTrigger():
             rospy.loginfo(rospy.get_caller_id() + ": Xbox joy.rightTrigger() " + str(joy.rightTrigger()))
             msg.command = 1
-            velocity_left = min(100, velocity_left + 100.0 * joy.rightTrigger())
-            velocity_right =  min(100, velocity_right + 100.0 * joy.rightTrigger())
+            velocity_left = max(-100, velocity_left - 100.0 * joy.rightTrigger())
+            velocity_right =  max(-100, velocity_right - 100.0 * joy.rightTrigger())
+            pressed = True
+        if joy.leftTrigger():
+            rospy.loginfo(rospy.get_caller_id() + ": Xbox joy.leftTrigger() " + str(joy.leftTrigger()))
+            msg.command = 1
+            velocity_left = min(100, velocity_left + 100.0 * joy.leftTrigger())
+            velocity_right =  min(100, velocity_right + 100.0 * joy.leftTrigger())
             pressed = True
         if joy.leftX():
             rospy.loginfo(rospy.get_caller_id() + ": Xbox joy.leftX() " + str(joy.leftX()))

@@ -1,10 +1,17 @@
 """ Xbox 360 controller support for Python
 11/9/13 - Steven Jacobs
+09/25/18 - Daniel Neumann
 
 This class module supports reading a connected xbox controller.
 It requires that xboxdrv be installed first:
 
     sudo apt-get install xboxdrv
+
+To use xboxdrv without root, create a udev rule file `/etc/udev/rules.d/90-usbpermission.rules`:
+
+    SUBSYSTEM=="usb",GROUP="plugdev",MODE="0664"
+
+Make sure the user is in group "plugdev".
 
 See http://pingus.seul.org/~grumbel/xboxdrv/ for details on xboxdrv
 
